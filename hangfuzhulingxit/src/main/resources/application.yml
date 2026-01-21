@@ -6,24 +6,37 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/hanfu_final_db?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
-    password: root
+    password: 94887149021qQ
+  # 文件上传配置
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
 
+# MyBatis-Plus 配置
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   configuration:
+    # 开启驼峰命名转换
     map-underscore-to-camel-case: true
+    # 开启日志
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     db-config:
+      # 主键策略：自增
       id-type: auto
+      # 逻辑删除字段
       logic-delete-field: isDeleted
       logic-delete-value: 1
       logic-not-delete-value: 0
 
+# JWT 配置
 jwt:
   secret: HanfuRentalSystemSecretKey2024VeryLongSecretKeyForJWTToken
-  expiration: 604800000
+  expiration: 604800000  # 7天过期 (毫秒)
 
+# 文件上传配置
 file:
   upload-path: ./uploads/
   max-size: 10MB

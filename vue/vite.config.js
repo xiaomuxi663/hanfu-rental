@@ -4,9 +4,22 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [vue()],
-  resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
+  },
   server: {
     port: 5173,
-    proxy: { '/api': { target: 'http://localhost:8080', changeOrigin: true } }
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true
+      },
+      '/uploads': {
+        target: 'http://localhost:8080',
+        changeOrigin: true
+      }
+    }
   }
 })
